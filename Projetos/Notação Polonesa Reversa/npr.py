@@ -1,5 +1,3 @@
-
-
 def adicionarpilha(pilha, valor):
     pilha.append(valor)
 
@@ -24,11 +22,15 @@ try:
             removerpilha(NPR, 3)
             adicionarpilha(NPR, var)
         elif var == '/':
-            var = float(NPR[pos-1]) / float(NPR[pos-2])
-            removerpilha(NPR, 3)
-            adicionarpilha(NPR, var)
+            try:
+                var = float(NPR[pos-1]) / float(NPR[pos-2])
+                removerpilha(NPR, 3)
+                adicionarpilha(NPR, var)
+            except ZeroDivisionError:
+                print("Impossível dividir por 0.")
+                removerpilha(NPR, 1)
         elif var == '-':
-            aux = float(NPR[pos-1]) - float(NPR[pos-2])
+            var = float(NPR[pos-1]) - float(NPR[pos-2])
             removerpilha(NPR, 3)
             adicionarpilha(NPR, var)
         print(var)
